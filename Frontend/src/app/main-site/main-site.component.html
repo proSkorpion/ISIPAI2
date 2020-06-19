@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row justify-content-center text-center">
+    <div class="col-12 py-5">
+      <h2>Oferta</h2>
+      <div class=".flex-column">
+          <app-filters [carList]="productList" [typeList]="typeList"></app-filters>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="username === null">
+  <div class="jumbotron">
+    <div class="container">
+
+        <h2 class="text-center pt-5 pb-3">POŁĄCZ SWOJE KONTO</h2>
+        <div class="row justify-content-center text-center">
+          <div class="col-10 col-md-4">
+            <div class="feature">
+              <img src="assets/img/facebook.png">
+              <h3>Facebook</h3>
+              <p>Połącz swoje konto facebook.</p>
+              <a class="btn btn-purple btn-lg" (click)="loginByFacebook()">Połącz</a>
+            </div>
+          </div>
+          <div class="col-10 col-md-4">
+            <div class="feature">
+              <img src="assets/img/discord.png">
+              <h3>Discord</h3>
+              <p>Połącz swoje konto discord.</p>
+              <a class="btn btn-purple btn-lg" (click)="loginByDiscord()">Połącz</a>
+            </div>
+          </div>
+          <div class="col-10 col-md-4">
+            <div class="feature">
+              <img src="assets/img/google.png">
+              <h3>Google</h3>
+              <p>Połącz swoje konto google.</p>
+              <a class="btn btn-purple btn-lg" (click)="loginByGoogle()">Połącz</a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</ng-container>
+
+<div class="container py-3">
+  <div class="row justify-content-center py-5">
+    <div class="col-lg-6">
+      <h3 class="pb-4">BMW GROUP CarSaloon</h3>
+      <h4>Kim jesteśmy?</h4>
+      <p>
+      BMW Group to światowy lider wśród producentów samochodów i motocykli segmentu premium, łączący najwyższe standardy z doskonałą jakością.
+        </p>
+      <h4>Nasze wartości.</h4>
+      <p>
+              BMW wyróżnia odrębny i spójny charakter.
+      Zawsze dążymy do celu, pracujemy, myślimy, tworzymy i wprowadzamy zmiany. Nasza kultura pozwala zamieniać pasję w energię,
+      wdrażać innowacyjne pomysły oraz przekształcać wydajne rozwiązania w sukcesy.
+      </p>
+
+    </div>
+    <div class="col-lg-6"><img class="img-fluid" src="assets/img/dealer.jpg"></div>
+  </div>
+</div>
+<app-footer></app-footer>

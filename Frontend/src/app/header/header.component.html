@@ -1,0 +1,50 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
+  <div class="container-fluid">
+    <img src="assets/img/logo_test.png">
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li><a routerLink="/" routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"></a></li>
+          <li><a class="nav-link " routerLink="/mainSite" routerLinkActive="active" >Strona Główna</a></li>
+          <li><a class="nav-link " routerLink="/meeting" routerLinkActive="active" >Umów się na jazdę</a></li>
+          <ng-container *ngIf="username === null">
+            <li><a class="nav-link " routerLink="/login" routerLinkActive="active" >Logowanie</a></li>
+            <li><a class="nav-link " routerLink="/register" routerLinkActive="active" >Rejestracja</a></li>
+          </ng-container>
+          <li><a class="nav-link " routerLink="/contact" routerLinkActive="active" >Kontakt</a></li>
+      </ul>
+      <ng-container *ngIf="username !== null">
+        <div class="btn-group">
+          <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">
+            Witaj, {{username}}
+          </button>
+          <ul class="dropdown-menu noclose">
+            <li class="text-center">
+              <a class="nav-link " (click)="onClick()"  style="cursor: pointer;" >Wyloguj się</a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</nav>
+
+
+<ngb-carousel>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img src="assets/img/bmw.jpg" alt="Angular Carousel 1">
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img src="assets/img/happy1.jpg" alt="Angular Carousel 1">
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img src="assets/img/happy2.jpg" alt="Angular Carousel 1">
+    </div>
+  </ng-template>
+</ngb-carousel>

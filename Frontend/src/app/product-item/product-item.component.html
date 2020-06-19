@@ -1,0 +1,10 @@
+<div class="card mb-4 shadow-sm" style="width: 15rem;">
+    <img class="bd-placeholder-img card-img-top" width="100%" src={{productItem.imageUrl}}/>
+    <div class="card-body">
+      <strong>Cena: {{parsePriceToString()}} PLN</strong>
+      <p class="card-text py-3"><strong><a class="text-dark" [routerLink]="['/detailsCars']"
+                                           queryParamsHandling="merge" [queryParams]="{'idCar': productItem.carId}">{{productItem.carMake+" "+productItem.model}}</a></strong></p>
+      <a [routerLink]="['/detailsCars']" queryParamsHandling="merge" [queryParams]="{'idCar': productItem.carId, 'car': this.productItem.price}"
+         class="btn align-center btn-outline-primary">Zamów</a>
+    </div>
+</div>

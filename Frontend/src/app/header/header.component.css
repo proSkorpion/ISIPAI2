@@ -1,0 +1,6 @@
+.btn-group:hover .dropdown-menu.noclose {
+  display: block;
+}
+.dropdown-menu.noclose {
+  margin-top: 0px;
+}

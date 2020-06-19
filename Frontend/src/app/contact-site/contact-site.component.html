@@ -1,0 +1,50 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row justify-content-center text-center">
+    <section class="section">
+      <div class="container">
+        <h1 class="mb-4">Skontaktuj się z nami!</h1>
+
+        <form (ngSubmit)="submitForm()" #contactForm="ngForm">
+          <!-- Nadawca -->
+          <div class="form-group">
+            <label class="label">Temat</label>
+            <input type="text" name="subject" class="form-control"
+                   [(ngModel)]="feedbackData.subject"
+                   placeholder="Podaj temat"
+                   #topicInput="ngModel"
+                   required>
+            <small class="text-danger" *ngIf="topicInput.invalid && topicInput.touched"> Proszę podać temat</small>
+          </div>
+          <!-- Email -->
+          <div class="form-group">
+            <label class="label">Email</label>
+            <input type="text" name="email" class="form-control"
+                   [(ngModel)]="feedbackData.email"
+                   #emailInput="ngModel"
+                   placeholder="kontakt@gmail.com"
+                   required
+                   email>
+            <small class="text-danger" *ngIf="emailInput.invalid && emailInput.touched"> Podaj prawidlowy adres email</small>
+          </div>
+
+          <!-- Tresc -->
+          <div class="form-group">
+            <label class="label">Opisz swój problem.</label>
+            <textarea name="content" class="form-control" [(ngModel)]="feedbackData.content" rows="3"></textarea>
+          </div>
+
+          <!-- Wyslij -->
+          <button type="submit" class="btn btn-success shadow p-4 mb-4 "
+          [disabled]="contactForm.invalid">
+            Wyślij!
+          </button>
+        </form>
+
+      </div>
+    </section>
+
+  </div>
+</div>
+<app-footer></app-footer>
+

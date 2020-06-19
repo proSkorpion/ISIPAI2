@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-2">
+    <div class="card">
+        <div class="card-header">
+            <strong>Filtr</strong>
+        </div>
+        <div class="card-body">
+            <form (submit)="onSubmit(selectedOption)">
+                <div class="form-group">
+                    <strong>Cena</strong><br>
+                    <label for="from">Od</label>
+                    <input type="number" id="firstPrice" name="firstPrice" [(ngModel)]="fromPrice" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="to">Do</label>
+                    <input type="number" id="toPrice" name="toPrice" [(ngModel)]="toPrice" class="form-control">
+                </div>
+                <div class="form-group">
+                    <strong>Moc</strong><br>
+                    <label for="from">Od</label>
+                    <input type="number" id="fromPower" name="fromPower" [(ngModel)]="fromPower" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="to">Do</label>
+                    <input type="number" id="toPower" name="toPower" [(ngModel)]="toPower" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <strong>Typ nadwozia:</strong>
+                    <select class="form-control" id="sel1" name="selectedOption" [(ngModel)]="selectedOption" (submit)="onSubmit(selectedOption)">
+                      <option *ngFor="let type of typeList">
+                        {{ type.name}}
+                      </option>
+                    </select>
+                  </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Filtruj</button>
+            </form>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div class="row">
+      <div class="col-md-6 col-xl-4 col-lg-4" *ngFor="let product of productList">
+        <app-product-item [productItem]="product"></app-product-item>
+      </div>
+    </div>
+  </div>
+</div>
+

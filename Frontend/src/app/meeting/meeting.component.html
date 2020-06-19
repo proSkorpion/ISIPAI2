@@ -1,0 +1,89 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row justify-content-center text-center">
+    <section class="section">
+      <div class="container">
+        <h1 class="mb-4">Umów się na jazdę próbną</h1>
+
+        <form (ngSubmit)="contactForm.valid && submitForm()" #contactForm="ngForm">
+            <!-- Samochod -->
+          <div class="form-group">
+              <label class="label">Wybierz samochód</label>
+              <select class="form-control" id="sel1" name="selectedOption" [(ngModel)]="meetingForm.carName"  (change)="onSubmit(contactForm)">
+
+                <option *ngFor="let carItem of productList">
+                  {{ carItem.carMake+" "+carItem.model }}
+                </option>
+              </select>
+          </div>
+          <div *ngIf="meetingForm.carName !== undefined">
+              <img class="d-block w-100" src="{{car.imageUrl}}">
+          </div>
+          <small class="text-danger" *ngIf="contactForm.submitted && meetingForm.carName === undefined"> Musisz wybrać auto</small>
+            <!-- Imie -->
+           <div class="form-group">
+            <label class="label">Imie</label>
+            <input type="text" name="name" class="form-control"  onkeypress="return (event.charCode > 64 &&
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123 ) || (event.charCode ===260) || (event.charCode ===262) || (event.charCode ===321)
+            || (event.charCode ===323)|| (event.charCode ===211) || (event.charCode ===346) || (event.charCode ===377) || (event.charCode ===379) || (event.charCode ===261)
+            || (event.charCode ===263)|| (event.charCode ===281)|| (event.charCode ===322)|| (event.charCode ===324)|| (event.charCode ===243)|| (event.charCode ===347)
+            || (event.charCode ===378)|| (event.charCode ===380)"
+                   [(ngModel)]="meetingForm.name"
+                   placeholder="Imie"
+                   #nameInput="ngModel"
+                   required>
+              <small class="text-danger" *ngIf="contactForm.submitted && nameInput.errors?.required"> Musisz wpisać swoje imię</small>
+          </div>
+          <!-- Nazwisko -->
+          <div class="form-group">
+            <label class="label">Nazwisko</label>
+            <input type="text" name="surname" class="form-control"  onkeypress="return (event.charCode > 64 &&
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123 ) || (event.charCode ===260) || (event.charCode ===262) || (event.charCode ===321)
+            || (event.charCode ===323)|| (event.charCode ===211) || (event.charCode ===346) || (event.charCode ===377) || (event.charCode ===379) || (event.charCode ===261)
+            || (event.charCode ===263)|| (event.charCode ===281)|| (event.charCode ===322)|| (event.charCode ===324)|| (event.charCode ===243)|| (event.charCode ===347)
+            || (event.charCode ===378)|| (event.charCode ===380)"
+                   [(ngModel)]="meetingForm.surname"
+                   placeholder="Nazwisko"
+                   #surnameInput="ngModel"
+                   required>
+              <small class="text-danger" *ngIf="contactForm.submitted && surnameInput.errors?.required"> Musisz wpisać swoje nazwisko</small>
+          </div>
+           <!-- Email -->
+          <div class="form-group">
+            <label class="label">Email</label>
+            <input type="email" name="email" class="form-control"
+                   [(ngModel)]="meetingForm.email"
+                   placeholder="Email"
+                   #emailInput="ngModel"
+                   required
+                   email>
+              <small class="text-danger" *ngIf="contactForm.submitted && emailInput.errors?.email"> Email jest nieprawidłowy</small>
+              <small class="text-danger" *ngIf="contactForm.submitted && emailInput.errors?.required"> Musisz wpisać email</small>
+          </div>
+
+          <!-- Telefon -->
+          <div class="form-group">
+            <label class="label">Numer telefonu</label>
+            <input type="number"   name="phone" class="form-control"   onKeyPress="if(this.value.length==9) return false;"
+                   [(ngModel)]="meetingForm.phone"
+                   placeholder="623851425"
+                   #phoneInput="ngModel"
+                   required>
+              <small class="text-danger" *ngIf="contactForm.submitted && phoneInput.errors?.required"> Musisz wpisać numer kontaktowy</small>
+          </div>
+
+          <!-- Wyslij -->
+          <button type="submit" class="btn btn-success shadow p-4 mb-4 "
+          [disabled]="contactForm.invalid">
+            Wyślij!
+          </button>
+
+        </form>
+
+      </div>
+    </section>
+
+  </div>
+</div>
+<app-footer></app-footer>
+

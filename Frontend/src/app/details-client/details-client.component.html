@@ -1,0 +1,63 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row justify-content-center text-center">
+    <section class="section">
+      <div class="container">
+        <h1 class="mb-4">Podaj swoje informacje kontaktowe</h1>
+
+        <form (ngSubmit)="submitForm()" (click)="check()" #contactForm="ngForm">
+
+          <!-- Adres zamieszkania -->
+          <div class="form-group">
+            <label class="label">Adres zamieszkania</label>
+            <input type="text" name="address" class="form-control"
+                   [(ngModel)]="personDetails.address"
+                   placeholder="Adres zamieszkania"
+                   #addressInput="ngModel"
+                   [ngClass]="{ 'is-invalid': addressInput.touched && addressInput.invalid }"
+                   maxlength="100"
+                   required>
+            <small class="text-danger" *ngIf="addressInput.errors?.required && addressInput.touched"> Podaj swój adres </small>
+            <div  class="invalid-feedback">
+            </div>
+          </div>
+          <!-- PESEL -->
+          <div class="form-group">
+            <label class="label">PESEL</label>
+            <input type="text" name="pesel" class="form-control"
+                   [(ngModel)]="personDetails.pesel"
+                   placeholder="PESEL"
+                   #peselInput="ngModel"
+                   [ngClass]="{ 'is-invalid': peselInput.touched && statusPesel === false }"
+                   required>
+            <small class="text-danger" *ngIf="peselInput.errors?.required && peselInput.touched || statusPesel===false && peselInput.touched">Błędny pesel</small>
+            <div  class="invalid-feedback">
+            </div>
+          </div>
+          <!-- Tytul przelewu -->
+          <div class="form-group">
+            <label class="label">Tytuł przelewu</label>
+            <input type="text" name="description" class="form-control"  onkeypress="return (event.charCode > 64 &&
+event.charCode < 91) || (event.charCode > 96 && event.charCode < 123 )"
+                   [(ngModel)]="personDetails.description"
+                   placeholder="Tytuł transakcji"
+                   #descriptionInput="ngModel"
+                   maxlength="30"
+                   [ngClass]="{ 'is-invalid': descriptionInput.touched && descriptionInput.invalid }"
+                   required>
+            <small class="text-danger" *ngIf="descriptionInput.errors?.required && descriptionInput.touched"> Podaj tytuł transakcji </small>
+
+            <div  class="invalid-feedback">
+            </div>
+          </div>
+          <!-- Wyslij -->
+          <input type="submit" [disabled]="contactForm.invalid" class="btn btn-success shadow p-4 mb-4 " value="Zapłać">
+        </form>
+
+      </div>
+    </section>
+
+  </div>
+</div>
+<app-footer></app-footer>
+
